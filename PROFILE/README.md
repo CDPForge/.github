@@ -6,9 +6,9 @@
 - **Modular architecture**: Lightweight core with native support for external plugins.
 - **Flexible event ingestion**: Via APIs or file imports.
 - **Real-time processing**: Data enrichment, normalization, and validation.
-- **ID Graph Engine**: Advanced identity resolution.
-- **Flexible database layer**: Native support for diferent Databases.
-- **Kubernetes-native deployment**: Simple to deploy, kubernetes native.
+- TODO: **ID Graph Engine**: Advanced identity resolution.
+- TODO: **Flexible database layer**: Native support for diferent Databases.
+- TODO: **Kubernetes-native deployment**: Simple to deploy, kubernetes native.
 - **Extensible design**: SDK and APIs for building and integrating custom modules and plugins.
 
 ## Goal
