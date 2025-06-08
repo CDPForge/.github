@@ -84,11 +84,13 @@ All plugins:
 
 ---
 
-## Contributing
+## 🤝 Contributing
 
 We welcome contributions!  
 Before submitting a pull request, please read our [Contributing Guidelines](CONTRIBUTING.md) and accept the terms in our [Contributor License Agreement (CLA)](CLA.md).
 
-## License
+---
+
+## 📄 License
 
 This project is licensed under the terms of the [GNU General Public License v3.0](LICENSE).
