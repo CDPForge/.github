@@ -21,6 +21,11 @@ We welcome contributions!
 Before submitting a pull request, please read our [Contributing Guidelines](CONTRIBUTING.md) and accept the terms in our [Contributor License Agreement (CLA)](CLA.md).
 
 ---
+## Discord channel
+
+Connect with the CDP Forge community on Discord! Join us to collaborate, ask questions, and stay updated on the latest development: [https://discord.gg/SXqxsz7ca4]
+
+---
 
 ## 📄 License
 
