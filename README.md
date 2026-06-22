@@ -1,6 +1,6 @@
 # 🧩 CDPForge – Modular & Extensible Customer Data Platform
 
-**CDPForge** is an open source, Kubernetes-native Customer Data Platform designed to be **modular**, **real-time**, and **easily extensible** via plugins. It collects, processes, enriches, and stores customer-related data, providing flexible APIs and identity resolution features.
+**CDPForge** is a proprietary, Kubernetes-native Customer Data Platform designed to be **modular**, **real-time**, and **easily extensible** via plugins. It collects, processes, enriches, and stores customer-related data, providing flexible APIs and identity resolution features.
 
 ---
 
@@ -93,4 +93,4 @@ Before submitting a pull request, please read our [Contributing Guidelines](PROF
 
 ## 📄 License
 
-This project is licensed under the terms of the [GNU General Public License v3.0](PROFILE/LICENSE).
+This project is proprietary software. All rights reserved. Use is governed by the [CDPForge Proprietary License](PROFILE/LICENSE).

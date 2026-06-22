@@ -1,6 +1,6 @@
 # CDPForge
 
-> **CDPForge** is an open-source platform designed to build a modern, modular, and scalable Customer Data Platform (CDP) for real-time user data collection, management, and processing.
+> **CDPForge** is a proprietary platform designed to build a modern, modular, and scalable Customer Data Platform (CDP) for real-time user data collection, management, and processing.
 
 ## Key Features
 - **Modular architecture**: Lightweight core with native support for external plugins.
@@ -29,4 +29,4 @@ Connect with the CDP Forge community on Discord! Join us to collaborate, ask que
 
 ## 📄 License
 
-This project is licensed under the terms of the [GNU General Public License v3.0](LICENSE).
+This project is proprietary software. All rights reserved. Use is governed by the [CDPForge Proprietary License](LICENSE).
