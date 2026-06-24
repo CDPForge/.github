@@ -1,6 +1,27 @@
 # 🧩 CDPForge – Modular & Extensible Customer Data Platform
 
-**CDPForge** is a proprietary, Kubernetes-native Customer Data Platform designed to be **modular**, **real-time**, and **easily extensible** via plugins. It collects, processes, enriches, and stores customer-related data, providing flexible APIs and identity resolution features.
+**CDPForge** is a proprietary, Kubernetes-native Customer Data Platform designed to be **modular**, **real-time**, and **easily extensible** via plugins. It collects, unifies, governs, and activates customer data — providing identity resolution, audience segmentation, on-site personalization, a native consent manager, and flexible APIs.
+
+---
+
+## ✨ Platform Capabilities
+
+A single workspace to collect, unify, govern, and activate your customer data:
+
+| Capability | Description |
+|------------|-------------|
+| **Multi-channel collection** | Collect events from websites, apps, and APIs with a lightweight tracker that queues events and never loses data. |
+| **Identity resolution** | Merge anonymous and identified sessions into a single unified profile (Person) via device IDs and external identifiers. |
+| **Audience segmentation** | Build segments with a visual query builder and preview the matching profiles before activation. |
+| **Real-time enrichment** | A plugin pipeline enriches every event in real time — geo, identity, behavioral scoring — over an Apache Pulsar bus. |
+| **Event-driven triggers** | Automate actions that react to events or segment membership, with full visibility on every execution. |
+| **On-site personalization** | Serve targeted HTML components to qualified visitors, with activation rules based on URL and DOM. |
+| **Consent management** | A native consent manager and preference center: a per-client purpose catalog, a consent ledger, and ingestion gating for required purposes. |
+| **Governance & GDPR** | Audit logs of every action and tooling to handle GDPR deletion and data export requests. |
+| **AI assistant** | Query your data in natural language and get guided through operations, with a configurable LLM provider per client. |
+| **Flexible APIs & SDK** | REST APIs to manage clients, instances, segments, and profiles, plus an SDK to build custom pipeline plugins. |
+| **Privacy Sandbox ready** | Support for the Google Topics API (`browsingTopics`) to capture contextual interests in a privacy-friendly way. |
+| **Kubernetes-native** | A modular, scalable architecture where each module is deployable and scalable independently. |
 
 ---
 
@@ -10,12 +31,13 @@
 
 | Module            | Description |
 |-------------------|-------------|
-| **Input Manager**   | Ingests data via API or file uploads. Validates and forwards to Kafka. |
-| **Event Processor** | Multi-stage real-time ETL pipeline with plugin support. |
-| **Output API**      | Provides access to all data via REST or GraphQL APIs. |
-| **ID Graph Engine** | Resolves user identity via cookies, emails, user IDs using a GraphDB. |
+| **Input Manager**   | Ingests data via API or file uploads. Validates and forwards events onto the message bus. |
+| **Pipeline (ETL)**  | Multi-stage, real-time ETL pipeline with plugin support (input, processing, output). |
+| **Output API**      | Provides access to all data and platform configuration via REST APIs. |
+| **Identity Resolution** | Unifies anonymous and identified sessions into a single Person via device IDs and external identifiers. |
+| **Consent Manager** | Per-client purpose catalog, consent ledger, preference center, and ingestion gating for required purposes. |
 | **Auth System**     | Internal JWT-based access control. |
-| **Plugin Manager**  | Handles plugin/modules installation, registration, and configuration. |
+| **Plugin Manager**  | Handles plugin/module installation, registration, and configuration. |
 
 ---
 
@@ -23,8 +45,10 @@
 
 Each stage of the ETL pipeline allows for:
 
-- **Blocking Plugins**: must be executed before proceeding (they modify data).
+- **Blocking Plugins**: must complete before processing continues (they modify data).
 - **Non-blocking Plugins**: run in parallel; observe data but do not modify it.
+
+Events flow over an **Apache Pulsar** bus, so each module can be deployed and scaled independently.
 
 ---
 
@@ -34,15 +58,15 @@ Each stage of the ETL pipeline allows for:
 
 | Type               | Description |
 |--------------------|-------------|
-| **Input Plugins**    | Ingest from various data sources (CSV, Salesforce, etc.). |
-| **Pipeline Blocking Plugins** | Real-time enrichment or data modification within the pipeline. |
+| **Input Plugins**    | Ingest from various data sources (web tracker, file imports, external systems). |
+| **Pipeline Blocking Plugins** | Real-time enrichment or data modification within the pipeline (e.g. geo, identity, scoring). |
 | **Pipeline Non-blocking Plugins** | Asynchronous observers for export, logging, or analytics. |
-| **Batch Plugins**    | Periodic data jobs (e.g. audience builders, transformations, sync with external services). |
+| **Output Plugins**   | Forward processed data to external destinations and activation channels. |
 
 All plugins:
 - Are deployed as independent services/pods.
-- Communicate via Kafka (or other event bus).
-- Are managed by the **Plugin Manager**.
+- Communicate via the message bus (Apache Pulsar).
+- Are built with the official **Plugin SDK** and managed by the **Plugin Manager**.
 
 ---
 
@@ -50,24 +74,25 @@ All plugins:
 
 | Database         | Purpose |
 |------------------|---------|
-| **Elasticsearch** | Event storage and querying. |
-| TBD: **GraphDB (Neo4j, etc.)**   | Identity resolution (ID graph). |
-| **MySQL / PostgreSQL**      | Configs, plugin metadata, admin data. |
+| **OpenSearch** | Event storage and querying. |
+| **MySQL**         | Configs, plugin metadata, profiles, consent, and admin data. |
+
 ---
 
 ## 🚀 Kubernetes Deployment
 
-- Fully deployable on **Kubernetes** using a **Helm Chart** or a custom **Operator**.
+- Fully deployable on **Kubernetes** using a **Helm Chart**.
 - Plugin activation and configuration via `values.yaml`.
 - Secure, modular, and scalable microservice deployment.
 
 ---
 
-## 🔐 Security Model
+## 🔐 Security & Privacy
 
 - JWT-based authentication across modules.
-- All traffic scoped to internal K8s network.
-- Plugins only interact via message bus — reducing attack surface.
+- All traffic scoped to the internal K8s network.
+- Plugins only interact via the message bus — reducing attack surface.
+- Native consent management with ingestion gating, plus audit logs and GDPR deletion/export tooling.
 
 ---
 
@@ -76,9 +101,9 @@ All plugins:
 | Area             | Technology |
 |------------------|------------|
 | Core Backend     | Node.js |
-| Message Bus      | Kafka   |
-| Databases        | Elasticsearch, MySQL, GraphDB(TBD) |
-| API Layer        | REST or GraphQL |
+| Message Bus      | Apache Pulsar |
+| Databases        | OpenSearch, MySQL |
+| API Layer        | REST |
 | Auth             | JWT (OAuth2-ready) |
 | Deployment       | Kubernetes + Helm |
 
@@ -86,8 +111,7 @@ All plugins:
 
 ## 🤝 Contributing
 
-We welcome contributions!  
-Before submitting a pull request, please read our [Contributing Guidelines](PROFILE/CONTRIBUTING.md) and accept the terms in our [Contributor License Agreement (CLA)](PROFILE/CLA.md).
+CDPForge is proprietary software. Contributions are accepted by arrangement: any pull request requires accepting the terms in our [Contributor License Agreement (CLA)](PROFILE/CLA.md) — see the [Contributing Guidelines](PROFILE/CONTRIBUTING.md) for details.
 
 ---
 
