@@ -74,7 +74,7 @@ All plugins:
 
 | Database         | Purpose |
 |------------------|---------|
-| **Elasticsearch** | Event storage and querying. |
+| **OpenSearch** | Event storage and querying. |
 | **MySQL**         | Configs, plugin metadata, profiles, consent, and admin data. |
 
 ---
@@ -102,7 +102,7 @@ All plugins:
 |------------------|------------|
 | Core Backend     | Node.js |
 | Message Bus      | Apache Pulsar |
-| Databases        | Elasticsearch, MySQL |
+| Databases        | OpenSearch, MySQL |
 | API Layer        | REST |
 | Auth             | JWT (OAuth2-ready) |
 | Deployment       | Kubernetes + Helm |
