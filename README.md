@@ -27,6 +27,11 @@ A single workspace to collect, unify, govern, and activate your customer data:
 
 ## 🏗️ Architecture Overview
 
+> Looking for the whole picture — what every repository is, how an event
+> travels through the platform, which contracts hold it together and where to
+> change what? See **[ARCHITECTURE.md](ARCHITECTURE.md)**.
+
+
 ### Core Modules
 
 | Module            | Description |
