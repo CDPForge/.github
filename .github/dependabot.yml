@@ -1,0 +1,10 @@
+# Dependency updates. Added alongside the Node repositories' equivalent, after
+# the platform was found running three different versions of its own shared
+# contract at once with nothing to propagate a bump — see any sibling
+# repository's .github/dependabot.yml for that history.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
